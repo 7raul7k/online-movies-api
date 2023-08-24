@@ -62,22 +62,11 @@ public class Movie {
             nullable = false,
             columnDefinition = "TEXT")
     private String country;
-    @Column(name = "movie_age",
-            nullable = false,
-            columnDefinition = "INT")
-    private int age;
-    @Column(name = "movie_views",
-            nullable = false,
-            columnDefinition = "INT")
-    private int views;
+
     @Column(name = "movie_date",
             nullable = false,
             columnDefinition = "TEXT")
     private String date;
-    @Column(name = "movie_time",
-            nullable = false,
-            columnDefinition = "TEXT")
-    private String time;
 
     @Override
     public String toString(){
