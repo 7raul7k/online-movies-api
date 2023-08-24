@@ -63,5 +63,10 @@ public interface MovieRepo extends JpaRepository<Movie,Long> {
     @Query("select m from Movie m where m.date = ?1")
     List<Movie> getMovieByDate(String date);
 
+    @Query("select m from Movie m ")
+    List<Movie> getAllMovies();
+
+
+
 
 }

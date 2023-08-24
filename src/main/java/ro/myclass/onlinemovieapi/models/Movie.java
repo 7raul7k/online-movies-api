@@ -70,14 +70,14 @@ public class Movie {
 
     @Override
     public String toString(){
-        return id+","+name+","+genre+","+year+","+rating+","+description+","+director+","+duration+","+language+","+country+","+age+","+views+","+date+","+time;
+        return id+","+name+","+genre+","+year+","+rating+","+description+","+director+","+duration+","+language+","+country+","+date+",";
     }
 
     @Override
     public boolean equals(Object obj){
         Movie m = (Movie) obj;
 
-        if(this.name.equals(m.name)&&this.genre.equals(m.genre)&&this.year==m.year&&this.rating==m.rating&&this.description.equals(m.description)&&this.director.equals(m.director)&&this.duration==m.duration&&this.language.equals(m.language)&&this.country.equals(m.country)&&this.age==m.age&&this.views==m.views&&this.date.equals(m.date)&&this.time.equals(m.time)) {
+        if(this.name.equals(m.name)&&this.genre.equals(m.genre)&&this.year==m.year&&this.rating==m.rating&&this.description.equals(m.description)&&this.director.equals(m.director)&&this.duration==m.duration&&this.language.equals(m.language)&&this.country.equals(m.country)&&this.date.equals(m.date)) {
             return true;
         }
 
