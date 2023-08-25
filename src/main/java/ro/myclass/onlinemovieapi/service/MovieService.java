@@ -41,11 +41,16 @@ public class MovieService {
                     .genre(movieDTO.getGenre())
                     .year(movieDTO.getYear())
                     .rating(movieDTO.getRating())
+                    .description(movieDTO.getDescription())
                     .director(movieDTO.getDirector())
+                    .duration(movieDTO.getDuration())
                     .language(movieDTO.getLanguage())
                     .country(movieDTO.getCountry())
+                    .date(movieDTO.getDate())
                     .build();
-            movieRepo.save(movie1);
+
+            this.movieRepo.save(movie1);
+
         } else {
             throw new MovieWasFoundException();
         }
@@ -225,14 +230,7 @@ public class MovieService {
         }
     }
 
-    public List<Movie> getMovieByDate(String date){
-        List<Movie> movies = movieRepo.getMovieByDate(date);
-        if(movies.isEmpty()){
-            throw new ListEmptyException();
-        }else{
-            return movies;
-        }
-    }
+
 
 
 }
