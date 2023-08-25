@@ -307,9 +307,7 @@ class MovieRepoTest {
 
     @Test
     public void getMovieByDate(){
-        //generate 4 movies from 2019 with real proprietes with same date
-        //save them in the database
-        //create a arraylist and save them
+
 
         Movie movie = Movie.builder().name("The Matrix 4").description("A sci-fi story").genre("Action").description("A sci-fi story").director("Lana Wachowski").duration(144).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build();
         Movie movie1 = Movie.builder().name("Thor: Love and Thunder").description("A superhero story").genre("Action").description("A superhero story").director("Taika Waititi").duration(150).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build();
@@ -329,6 +327,13 @@ class MovieRepoTest {
         movieList.add(movie3);
 
         assertEquals(movieList,movieRepo.getMovieByDate("2020-12-22"));
+    }
+
+    @Test
+    public void getMovieById(){
+        Movie movie = Movie.builder().name("The Matrix 4").description("A sci-fi story").genre("Action").description("A sci-fi story").director("Lana Wachowski").duration(144).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build();
+        movieRepo.save(movie);
+        assertEquals(movie,movieRepo.getMovieById(movie.getId()).get());
     }
 
 

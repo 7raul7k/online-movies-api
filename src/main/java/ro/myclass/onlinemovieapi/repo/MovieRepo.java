@@ -66,6 +66,9 @@ public interface MovieRepo extends JpaRepository<Movie,Long> {
     @Query("select m from Movie m ")
     List<Movie> getAllMovies();
 
+    @Query("select m from Movie m where m.id = ?1")
+    Optional<Movie> getMovieById(long id);
+
 
 
 
