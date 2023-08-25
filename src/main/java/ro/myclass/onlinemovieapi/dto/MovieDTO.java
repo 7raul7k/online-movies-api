@@ -22,4 +22,5 @@ public class MovieDTO {
     private int duration;
     private String language;
     private String country;
+    private String date;
 }
