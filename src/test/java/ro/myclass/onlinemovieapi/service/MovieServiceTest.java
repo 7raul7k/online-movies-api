@@ -491,6 +491,40 @@ class MovieServiceTest {
     }
 
 
+    @Test
+    public void getMovieById(){
+        Movie movie = Movie.builder().id(1L).name("test").genre("test").year(2000).rating(5).description("test").date("test").director("test").language("english").country("test").build();
+
+        doReturn(Optional.of(movie)).when(movieRepo).getMovieById(movie.getId());
+
+
+
+        assertEquals(movie,this.movieService.getMovieById(1));
+
+    }
+
+    @Test
+    public void getMovieByIdException(){
+        doReturn(Optional.empty()).when(movieRepo).getMovieById(1L);
+
+        assertThrows(MovieNotFoundException.class,()->movieService.getMovieById(1));
+    }
+
+    @Test
+    public void getMovieByNameAndDirector(){
+        Movie movie = Movie.builder().id(1L).name("test").genre("test").year(2000).rating(5).description("test").date("test").director("test").language("english").country("test").build();
+
+        doReturn(Optional.of(movie)).when(movieRepo).getMovieByNameAndDirector(movie.getName(),movie.getDirector());
+
+        assertEquals(movie,movieService.getMovieByNameAndDirector(movie.getName(),movie.getDirector()));
+    }
+
+    @Test
+    public void getMovieByNameAndDirectorException(){
+        doReturn(Optional.empty()).when(movieRepo).getMovieByNameAndDirector("test","test");
+
+        assertThrows(MovieNotFoundException.class,()->movieService.getMovieByNameAndDirector("test","test"));
+    }
 
 
 

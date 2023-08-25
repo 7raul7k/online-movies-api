@@ -230,7 +230,14 @@ public class MovieService {
         }
     }
 
-
+    public Movie getMovieById(int id){
+        Optional<Movie> movie = movieRepo.getMovieById((long) id);
+        if(movie.isEmpty()){
+            throw new MovieNotFoundException();
+        }else{
+            return movie.get();
+        }
+    }
 
 
 }
