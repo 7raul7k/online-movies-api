@@ -32,7 +32,7 @@ public class MovieResource {
     }
 
     @PostMapping("/addMovie")
-    public ResponseEntity<String> addMovie(MovieDTO movie) {
+    public ResponseEntity<String> addMovie(@RequestBody MovieDTO movie) {
         this.movieService.addMovie(movie);
 
         log.info("REST request to add a movie {}", movie);
@@ -50,7 +50,7 @@ public class MovieResource {
     }
 
     @GetMapping("/getMovieById/{id}")
-    public ResponseEntity<Movie> getMovieById(int id) {
+    public ResponseEntity<Movie> getMovieById(@PathVariable int id) {
         Movie movie = this.movieService.getMovieById(id);
 
         log.info("REST request to get a movie by id {}", id);
@@ -68,7 +68,7 @@ public class MovieResource {
     }
 
     @PutMapping("/updateMovie")
-    public ResponseEntity<String> updateMovie(MovieDTO movie) {
+    public ResponseEntity<String> updateMovie(@RequestBody MovieDTO movie) {
         this.movieService.updateMovie(movie);
 
         log.info("REST request to update a movie {}", movie);
