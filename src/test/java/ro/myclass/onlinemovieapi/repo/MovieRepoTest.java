@@ -32,17 +32,19 @@ class MovieRepoTest {
     @Test
     public void getAllMovies(){
 
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
-        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Crime").description("A crime story").director("Francis Ford Coppola").duration(180).language("English").rating(9).year(1972).country("USA").date("1972-03-24").build();
-        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("Frank Darabont").duration(142).language("English").rating(9).year(1994).country("USA").date("1994-10-14").build();
-        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("Christopher Nolan").duration(152).language("English").rating(9).year(2008).country("USA").date("2008-07-18").build();
+       //generate 4 movies
+
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
+        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Crime").description("A crime story").director("Francis Ford Coppola").rating(9).year(1972).build();
+        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("Frank Darabont").rating(9).year(1994).build();
+        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("Christopher Nolan").rating(9).year(2008).build();
 
         movieRepo.save(movie);
         movieRepo.save(movie1);
         movieRepo.save(movie2);
         movieRepo.save(movie3);
 
-        List<Movie> movieList= new ArrayList<>();
+        List<Movie> movieList = new ArrayList<>();
         movieList.add(movie);
         movieList.add(movie1);
         movieList.add(movie2);
@@ -53,8 +55,7 @@ class MovieRepoTest {
 
     @Test
     public void getMovieByName(){
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
-
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
         movieRepo.save(movie);
 
         assertEquals(movie,movieRepo.getMovieByName("Titanic").get());
@@ -63,11 +64,11 @@ class MovieRepoTest {
     @Test
     public void getMovieByGenre(){
 
-
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
-        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Drama").description("A crime story").director("Francis Ford Coppola").duration(180).language("English").rating(9).year(1972).country("USA").date("1972-03-24").build();
-        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("Frank Darabont").duration(142).language("English").rating(9).year(1994).country("USA").date("1994-10-14").build();
-        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Drama").description("A superhero story").director("Christopher Nolan").duration(152).language("English").rating(9).year(2008).country("USA").date("2008-07-18").build();
+        //generate 4 movies with same drama genre
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
+        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Drama").description("A crime story").director("Francis Ford Coppola").rating(9).year(1972).build();
+        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("Frank Darabont").rating(9).year(1994).build();
+        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Drama").description("A superhero story").director("Christopher Nolan").rating(9).year(2008).build();
 
         movieRepo.save(movie);
         movieRepo.save(movie1);
@@ -86,12 +87,11 @@ class MovieRepoTest {
     @Test
     public void getMovieByYear(){
 
-
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
-        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Crime").description("A crime story").director("Francis Ford Coppola").duration(180).language("English").rating(9).year(1997).country("USA").date("1972-03-24").build();
-        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("Frank Darabont").duration(142).language("English").rating(9).year(1997).country("USA").date("1994-10-14").build();
-        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("Christopher Nolan").duration(152).language("English").rating(9).year(1997).country("USA").date("2008-07-18").build();
-
+        //generate 4 movies with year 1997
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
+        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Crime").description("A crime story").director("Francis Ford Coppola").rating(9).year(1997).build();
+        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("Frank Darabont").rating(9).year(1997).build();
+        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("Christopher Nolan").rating(9).year(1997).build();
         movieRepo.save(movie);
         movieRepo.save(movie1);
         movieRepo.save(movie2);
@@ -110,12 +110,12 @@ class MovieRepoTest {
     public void getMovieByRating(){
 
 
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
-        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Crime").description("A crime story").director("Francis Ford Coppola").duration(180).language("English").rating(8).year(1972).country("USA").date("1972-03-24").build();
-        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("Frank Darabont").duration(142).language("English").rating(8).year(1994).country("USA").date("1994-10-14").build();
-        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("Christopher Nolan").duration(152).language("English").rating(8).year(2008).country("USA").date("2008-07-18").build();
-
-        movieRepo.save(movie);
+        //generate 4 movies with rating 8
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
+        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Crime").description("A crime story").director("Francis Ford Coppola").rating(8).year(1972).build();
+        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("Frank Darabont").rating(8).year(1994).build();
+        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("Christopher Nolan").rating(8).year(2008).build();
+         movieRepo.save(movie);
         movieRepo.save(movie1);
         movieRepo.save(movie2);
         movieRepo.save(movie3);
@@ -133,10 +133,11 @@ class MovieRepoTest {
     public void getMovieByDirector(){
 
 
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
-        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Crime").description("A crime story").director("James Cameron").duration(180).language("English").rating(8).year(1972).country("USA").date("1972-03-24").build();
-        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Drama").description("A prison story").director("James Cameron").duration(142).language("English").rating(8).year(1994).country("USA").date("1994-10-14").build();
-        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("James Cameron").duration(152).language("English").rating(8).year(2008).country("USA").date("2008-07-18").build();
+       // generate 4 movies with same director
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Action").description("A love story").director("James Cameron").year(1997).rating(9).build();
+        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Action").description("A crime story").director("James Cameron").year(1972).rating(9).build();
+        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Action").description("A prison story").director("James Cameron").year(1994).rating(9).build();
+        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("James Cameron").year(2008).rating(9).build();
 
         movieRepo.save(movie);
         movieRepo.save(movie1);
@@ -150,62 +151,15 @@ class MovieRepoTest {
         movieList.add(movie3);
 
         assertEquals(movieList,movieRepo.getMovieByDirector("James Cameron"));
-
     }
 
-    @Test
-    public void getMovieByLanguage(){
 
-        Movie movie = Movie.builder().name("Transformers").description("A robot story").genre("Action").description("A robot story").director("Michael Bay").duration(144).language("English").rating(8).year(2007).country("USA").date("2007-07-03").build();
-        Movie movie1 = Movie.builder().name("Transformers: Revenge of the Fallen").description("A robot story").genre("Action").description("A robot story").director("Michael Bay").duration(150).language("English").rating(8).year(2009).country("USA").date("2009-06-19").build();
-        Movie movie2 = Movie.builder().name("Transformers: Dark of the Moon").description("A robot story").genre("Action").description("A robot story").director("Michael Bay").duration(154).language("English").rating(8).year(2011).country("USA").date("2011-06-29").build();
-        Movie movie3 = Movie.builder().name("Transformers: Age of Extinction").description("A robot story").genre("Action").description("A robot story").director("Michael Bay").duration(165).language("English").rating(8).year(2014).country("USA").date("2014-06-25").build();
-
-        movieRepo.save(movie);
-        movieRepo.save(movie1);
-        movieRepo.save(movie2);
-        movieRepo.save(movie3);
-
-        List<Movie> movieList = new ArrayList<>();
-        movieList.add(movie);
-        movieList.add(movie1);
-        movieList.add(movie2);
-        movieList.add(movie3);
-
-        assertEquals(movieList,movieRepo.getMovieByLanguage("English"));
-
-    }
-
-    @Test
-    public void getMoviesByCountry(){
-
-        Movie movie = Movie.builder().name("Morometii").description("A romanian story").genre("Drama").description("A romanian story").director("Sterea").duration(144).language("Romanian").rating(8).year(1987).country("Romania").date("1987-07-03").build();
-        Movie movie1 = Movie.builder().name("Pistruiatul").description("A romanian story").genre("Drama").description("A romanian story").director("Sergiu Nicolaescu").duration(150).language("Romanian").rating(8).year(1973).country("Romania").date("1973-06-19").build();
-        Movie movie2 = Movie.builder().name("Balanța").description("A romanian story").genre("Drama").description("A romanian story").director("Lucian Pintilie").duration(154).language("Romanian").rating(8).year(1992).country("Romania").date("1992-06-29").build();
-        Movie movie3 = Movie.builder().name("Filantropica").description("A romanian story").genre("Drama").description("A romanian story").director("Nae Caranfil").duration(165).language("Romanian").rating(8).year(2002).country("Romania").date("2002-06-25").build();
-
-        movieRepo.save(movie);
-        movieRepo.save(movie1);
-        movieRepo.save(movie2);
-        movieRepo.save(movie3);
-
-        List<Movie> movieList = new ArrayList<>();
-        movieList.add(movie);
-        movieList.add(movie1);
-        movieList.add(movie2);
-        movieList.add(movie3);
-
-        assertEquals(movieList,movieRepo.getMovieByCountry("Romania"));
-
-
-
-    }
 
     @Test
     public void getMovieByNameAndGenre(){
 
 
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
 
         movieRepo.save(movie);
 
@@ -216,8 +170,7 @@ class MovieRepoTest {
 
     @Test
     public void getMovieByNameAndYear(){
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
-
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
         movieRepo.save(movie);
 
         assertEquals(movie,movieRepo.getMovieByNameAndYear("Titanic",1997).get());
@@ -225,8 +178,7 @@ class MovieRepoTest {
 
     @Test
     public void getMovieByNameAndDirector(){
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(8).year(1997).country("USA").date("1997-12-19").build();
-
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
         movieRepo.save(movie);
 
         assertEquals(movie,movieRepo.getMovieByNameAndDirector("Titanic","James Cameron").get());
@@ -234,39 +186,27 @@ class MovieRepoTest {
 
     @Test
     public void getMovieByNameAndRating(){
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("English").rating(9).year(1997).country("USA").date("1997-12-19").build();
+
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
 
         movieRepo.save(movie);
 
-        assertEquals(movie,movieRepo.getMovieByNameAndRating("Titanic",9).get());
-    }
 
-    @Test
-    public void getMovieByNameAndLanguage(){
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("Romanian").rating(8).year(1997).country("USA").date("1997-12-19").build();
+        assertEquals(movie,movieRepo.getMovieByNameAndRating("Titanic",8).get());
+         }
 
-        movieRepo.save(movie);
 
-        assertEquals(movie,movieRepo.getMovieByNameAndLanguage("Titanic","Romanian").get());
-    }
 
-    @Test
-    public void getMovieByNameAndCountry(){
-        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").duration(210).language("Romanian").rating(8).year(1997).country("Romania").date("1997-12-19").build();
-
-        movieRepo.save(movie);
-
-        assertEquals(movie,movieRepo.getMovieByNameAndCountry("Titanic","Romania").get());
-    }
 
     @Test
     public void getMovieByGenreAndYear(){
 
+        // generate 4 movies with same genre and year
 
-        Movie movie = Movie.builder().name("The Matrix 4").description("A sci-fi story").genre("Action").description("A sci-fi story").director("Lana Wachowski").duration(144).language("English").rating(8).year(2022).country("USA").date("2022-12-22").build();
-        Movie movie1 = Movie.builder().name("Thor: Love and Thunder").description("A superhero story").genre("Action").description("A superhero story").director("Taika Waititi").duration(150).language("English").rating(8).year(2022).country("USA").date("2022-05-06").build();
-        Movie movie2 = Movie.builder().name("Doctor Strange in the Multiverse of Madness").description("A superhero story").genre("Action").description("A superhero story").director("Sam Raimi").duration(154).language("English").rating(8).year(2022).country("USA").date("2022-03-25").build();
-        Movie movie3 = Movie.builder().name("Black Panther II").description("A superhero story").genre("Action").description("A superhero story").director("Ryan Coogler").duration(165).language("English").rating(8).year(2022).country("USA").date("2022-07-08").build();
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Action").description("A love story").director("James Cameron").year(1997).rating(9).build();
+        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Action").description("A crime story").director("Francis Ford Coppola").year(1972).rating(9).build();
+        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Action").description("A prison story").director("Frank Darabont").year(1994).rating(9).build();
+        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("Christopher Nolan").year(2008).rating(9).build();
 
         movieRepo.save(movie);
         movieRepo.save(movie1);
@@ -279,41 +219,16 @@ class MovieRepoTest {
         movieList.add(movie2);
         movieList.add(movie3);
 
-        assertEquals(movieList,movieRepo.getMovieByGenreAndYear("Action",2022));
-    }
+          }
 
     @Test
     public void getMovieByGenreAndRating(){
 
-
-        Movie movie = Movie.builder().name("The Matrix 4").description("A sci-fi story").genre("Action").description("A sci-fi story").director("Lana Wachowski").duration(144).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build();
-        Movie movie1 = Movie.builder().name("Thor: Love and Thunder").description("A superhero story").genre("Action").description("A superhero story").director("Taika Waititi").duration(150).language("English").rating(8).year(2020).country("USA").date("2020-05-06").build();
-        Movie movie2 = Movie.builder().name("Doctor Strange in the Multiverse of Madness").description("A superhero story").genre("Action").description("A superhero story").director("Sam Raimi").duration(154).language("English").rating(8).year(2020).country("USA").date("2020-03-25").build();
-        Movie movie3 = Movie.builder().name("Black Panther II").description("A superhero story").genre("Action").description("A superhero story").director("Ryan Coogler").duration(165).language("English").rating(8).year(2020).country("USA").date("2020-07-08").build();
-
-        movieRepo.save(movie);
-        movieRepo.save(movie1);
-        movieRepo.save(movie2);
-        movieRepo.save(movie3);
-
-        List<Movie> movieList = new ArrayList<>();
-        movieList.add(movie);
-        movieList.add(movie1);
-        movieList.add(movie2);
-        movieList.add(movie3);
-
-        assertEquals(movieList,movieRepo.getMovieByGenreAndRating("Action",8));
-    }
-
-    @Test
-    public void getMovieByDate(){
-
-
-        Movie movie = Movie.builder().name("The Matrix 4").description("A sci-fi story").genre("Action").description("A sci-fi story").director("Lana Wachowski").duration(144).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build();
-        Movie movie1 = Movie.builder().name("Thor: Love and Thunder").description("A superhero story").genre("Action").description("A superhero story").director("Taika Waititi").duration(150).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build();
-        Movie movie2 = Movie.builder().name("Doctor Strange in the Multiverse of Madness").description("A superhero story").genre("Action").description("A superhero story").director("Sam Raimi").duration(154).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build();
-        Movie movie3 = Movie.builder().name("Black Panther II").description("A superhero story").genre("Action").description("A superhero story").director("Ryan Coogler").duration(165).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build(); 
-
+        //generate 4 movies with same genre and rating
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Action").description("A love story").director("James Cameron").year(1997).rating(9).build();
+        Movie movie1 = Movie.builder().name("The Godfather").description("A crime story").genre("Action").description("A crime story").director("Francis Ford Coppola").year(1972).rating(9).build();
+        Movie movie2 = Movie.builder().name("The Shawshank Redemption").description("A prison story").genre("Action").description("A prison story").director("Frank Darabont").year(1994).rating(9).build();
+        Movie movie3 = Movie.builder().name("The Dark Knight").description("A superhero story").genre("Action").description("A superhero story").director("Christopher Nolan").year(2008).rating(9).build();
 
         movieRepo.save(movie);
         movieRepo.save(movie1);
@@ -326,13 +241,15 @@ class MovieRepoTest {
         movieList.add(movie2);
         movieList.add(movie3);
 
-        assertEquals(movieList,movieRepo.getMovieByDate("2020-12-22"));
-    }
+        assertEquals(movieList,movieRepo.getMovieByGenreAndRating("Action",9));
+
+         }
+
 
     @Test
     public void getMovieById(){
-        Movie movie = Movie.builder().name("The Matrix 4").description("A sci-fi story").genre("Action").description("A sci-fi story").director("Lana Wachowski").duration(144).language("English").rating(8).year(2020).country("USA").date("2020-12-22").build();
-        movieRepo.save(movie);
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
+          movieRepo.save(movie);
         assertEquals(movie,movieRepo.getMovieById(movie.getId()).get());
     }
 

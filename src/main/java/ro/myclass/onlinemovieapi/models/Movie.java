@@ -50,34 +50,18 @@ public class Movie {
             nullable = false,
             columnDefinition = "TEXT")
     private String director;
-    @Column(name = "movie_duration",
-            nullable = false,
-            columnDefinition = "INT")
-    private int duration;
-    @Column(name = "movie_language",
-            nullable = false,
-            columnDefinition = "TEXT")
-    private String language;
-    @Column(name = "movie_country",
-            nullable = false,
-            columnDefinition = "TEXT")
-    private String country;
 
-    @Column(name = "movie_date",
-            nullable = false,
-            columnDefinition = "TEXT")
-    private String date;
 
     @Override
     public String toString(){
-        return id+","+name+","+genre+","+year+","+rating+","+description+","+director+","+duration+","+language+","+country+","+date+",";
+        return id+","+name+","+genre+","+year+","+rating+","+description+","+director;
     }
 
     @Override
     public boolean equals(Object obj){
         Movie m = (Movie) obj;
 
-        if(this.name.equals(m.name)&&this.genre.equals(m.genre)&&this.year==m.year&&this.rating==m.rating&&this.description.equals(m.description)&&this.director.equals(m.director)&&this.duration==m.duration&&this.language.equals(m.language)&&this.country.equals(m.country)&&this.date.equals(m.date)) {
+        if(this.name.equals(m.name)&&this.genre.equals(m.genre)&&this.year==m.year&&this.rating==m.rating&&this.description.equals(m.description)&&this.director.equals(m.director)) {
             return true;
         }
 
