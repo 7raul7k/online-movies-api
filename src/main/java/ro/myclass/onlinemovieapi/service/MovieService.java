@@ -43,10 +43,6 @@ public class MovieService {
                     .rating(movieDTO.getRating())
                     .description(movieDTO.getDescription())
                     .director(movieDTO.getDirector())
-                    .duration(movieDTO.getDuration())
-                    .language(movieDTO.getLanguage())
-                    .country(movieDTO.getCountry())
-                    .date(movieDTO.getDate())
                     .build();
 
             this.movieRepo.save(movie1);
@@ -84,10 +80,6 @@ public class MovieService {
               movie1.setRating(movieDTO.getRating());
           }if(movieDTO.getDirector()!=null){
               movie1.setDirector(movieDTO.getDirector());
-          }if(movieDTO.getLanguage()!=null){
-              movie1.setLanguage(movieDTO.getLanguage());
-          }if(movieDTO.getCountry()!=null){
-              movie1.setCountry(movieDTO.getCountry());
           }
 
           movieRepo.saveAndFlush(movie1);
@@ -140,24 +132,6 @@ public class MovieService {
         }
     }
 
-    public List<Movie> getMovieByLanguage(String language){
-        List<Movie> movies = movieRepo.getMovieByLanguage(language);
-        if(movies.isEmpty()){
-            throw new ListEmptyException();
-        }else{
-            return movies;
-        }
-    }
-
-    public List<Movie> getMovieByCountry(String country){
-        List<Movie> movies = movieRepo.getMovieByCountry(country);
-        if(movies.isEmpty()){
-            throw new ListEmptyException();
-        }else{
-            return movies;
-        }
-    }
-
     public Movie getMovieByNameAndGenre(String name,String genre){
         Optional<Movie> movie = movieRepo.getMovieByNameAndGenre(name,genre);
         if(movie.isEmpty()){
@@ -194,23 +168,6 @@ public class MovieService {
         }
     }
 
-    public Movie getMovieByNameAndLanguage(String name,String language){
-        Optional<Movie> movie = movieRepo.getMovieByNameAndLanguage(name,language);
-        if(movie.isEmpty()){
-            throw new MovieNotFoundException();
-        }else{
-            return movie.get();
-        }
-    }
-
-    public Movie getMovieByNameAndCountry(String name,String country){
-        Optional<Movie> movie = movieRepo.getMovieByNameAndCountry(name,country);
-        if(movie.isEmpty()){
-            throw new MovieNotFoundException();
-        }else{
-            return movie.get();
-        }
-    }
 
     public List<Movie> getMovieByGenreAndYear(String genre,int year){
         List<Movie> movies = movieRepo.getMovieByGenreAndYear(genre,year);

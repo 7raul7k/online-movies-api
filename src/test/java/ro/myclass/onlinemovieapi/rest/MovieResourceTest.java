@@ -135,7 +135,7 @@ class MovieResourceTest {
 
     @Test
     public void getMovieByIdOk() throws Exception{
-        Movie movie = Movie.builder().id(1L).name("test").genre("test").year(2020).rating(10).description("test").director("test").duration(120).language("test").country("test").date("test").build();
+        Movie movie = Movie.builder().id(1L).name("test").genre("test").year(2020).rating(10).description("test").director("test").build();
 
         doReturn(movie).when(movieService).getMovieById(1);
 
@@ -153,8 +153,7 @@ class MovieResourceTest {
 
     @Test
     public void getMovieByNameOk() throws Exception{
-        Movie movie = Movie.builder().id(1L).name("test").genre("test").year(2020).rating(10).description("test").director("test").duration(120).language("test").country("test").date("test").build();
-
+        Movie movie = Movie.builder().name("Titanic").description("A love story").genre("Drama").description("A love story").director("James Cameron").rating(8).year(1997).build();
         doReturn(movie).when(movieService).getMovieByName("test");
 
         restMockMvc.perform(get("/api/v1/movie/getMovieByName/test"))
@@ -273,57 +272,9 @@ class MovieResourceTest {
                 .andExpect(status().isBadRequest());
     }
 
-    @Test
-    public void getMovieByLanguageOk() throws Exception{
-        Faker faker = new Faker();
 
-        List<Movie> movieList = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
 
-            Movie movie = Movie.builder().id((long) i).name(faker.name().name()).genre(faker.name().name()).language("test").build();
-            movieList.add(movie);
 
-        }
-
-        doReturn(movieList).when(movieService).getMovieByLanguage("test");
-
-        restMockMvc.perform(get("/api/v1/movie/getMovieByLanguage/test"))
-                .andExpect(content().string(mapper.writeValueAsString(movieList))).andExpect(status().isOk());
-    }
-
-    @Test
-    public void getMovieByLanguageBadRequest() throws Exception{
-        doThrow(MovieWasFoundException.class).when(movieService).getMovieByLanguage("test");
-
-        restMockMvc.perform(get("/api/v1/movie/getMovieByLanguage/test"))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
-    public void getMovieByCountryOk() throws Exception{
-        Faker faker = new Faker();
-
-        List<Movie> movieList = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
-
-            Movie movie = Movie.builder().id((long) i).name(faker.name().name()).genre(faker.name().name()).country("test").build();
-            movieList.add(movie);
-
-        }
-
-        doReturn(movieList).when(movieService).getMovieByCountry("test");
-
-        restMockMvc.perform(get("/api/v1/movie/getMovieByCountry/test"))
-                .andExpect(content().string(mapper.writeValueAsString(movieList))).andExpect(status().isOk());
-    }
-
-    @Test
-    public void getMovieByCountryBadRequest() throws Exception{
-        doThrow(MovieWasFoundException.class).when(movieService).getMovieByCountry("test");
-
-        restMockMvc.perform(get("/api/v1/movie/getMovieByCountry/test"))
-                .andExpect(status().isBadRequest());
-    }
 
     @Test
     public void getMovieByNameAndGenreOk() throws Exception{
@@ -397,41 +348,8 @@ class MovieResourceTest {
                 .andExpect(status().isBadRequest());
     }
 
-    @Test
-    public void getMovieByNameAndLanguageOk() throws Exception{
-        Movie movie = Movie.builder().id(1L).name("test").language("test").build();
 
-        doReturn(movie).when(movieService).getMovieByNameAndLanguage("test","test");
 
-        restMockMvc.perform(get("/api/v1/movie/getMovieByNameAndLanguage").param("name","test").param("language","test"))
-                .andExpect(content().string(mapper.writeValueAsString(movie))).andExpect(status().isOk());
-    }
-
-    @Test
-    public void getMovieByNameAndLanguageBadRequest() throws Exception{
-        doThrow(MovieWasFoundException.class).when(movieService).getMovieByNameAndLanguage("test","test");
-
-        restMockMvc.perform(get("/api/v1/movie/getMovieByNameAndLanguage").param("name","test").param("language","test"))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
-    public void getMovieByNameAndCountryOk() throws Exception{
-        Movie movie = Movie.builder().id(1L).name("test").country("test").build();
-
-        doReturn(movie).when(movieService).getMovieByNameAndCountry("test","test");
-
-        restMockMvc.perform(get("/api/v1/movie/getMovieByNameAndCountry").param("name","test").param("country","test"))
-                .andExpect(content().string(mapper.writeValueAsString(movie))).andExpect(status().isOk());
-    }
-
-    @Test
-    public void getMovieByNameAndCountryBadRequest() throws Exception{
-        doThrow(MovieWasFoundException.class).when(movieService).getMovieByNameAndCountry("test","test");
-
-        restMockMvc.perform(get("/api/v1/movie/getMovieByNameAndCountry").param("name","test").param("country","test"))
-                .andExpect(status().isBadRequest());
-    }
 
     @Test
     public void getMovieByGenreAndYearOk() throws Exception{

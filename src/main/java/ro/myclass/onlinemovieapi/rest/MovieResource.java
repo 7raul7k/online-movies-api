@@ -116,25 +116,8 @@ public class MovieResource {
         return new ResponseEntity<>(movieList, HttpStatus.OK);
     }
 
-    @GetMapping("/getMovieByLanguage/{language}")
-    public ResponseEntity<List<Movie>> getMovieByLanguage(@PathVariable String language) {
 
-        List<Movie> movieList = this.movieService.getMovieByLanguage(language);
 
-        log.info("REST request to get a movie by language {}", language);
-
-        return new ResponseEntity<>(movieList, HttpStatus.OK);
-    }
-
-    @GetMapping("/getMovieByCountry/{country}")
-    public ResponseEntity<List<Movie>> getMovieByCountry(@PathVariable String country) {
-
-        List<Movie> movieList = this.movieService.getMovieByCountry(country);
-
-        log.info("REST request to get a movie by country {}", country);
-
-        return new ResponseEntity<>(movieList, HttpStatus.OK);
-    }
 
     @GetMapping("/getMovieByNameAndGenre")
     public ResponseEntity<Movie> getMovieByNameAndGenre(@RequestParam String name,@RequestParam String genre) {
@@ -172,26 +155,6 @@ public class MovieResource {
         Movie movie = this.movieService.getMovieByNameAndDirector(name,director);
 
         log.info("REST request to get a movie by name and director {}", name,director);
-
-        return new ResponseEntity<>(movie, HttpStatus.OK);
-    }
-
-    @GetMapping("/getMovieByNameAndLanguage")
-    public ResponseEntity<Movie> getMovieByNameAndLanguage(@RequestParam String name,@RequestParam String language) {
-
-        Movie movie = this.movieService.getMovieByNameAndLanguage(name,language);
-
-        log.info("REST request to get a movie by name and language {}", name,language);
-
-        return new ResponseEntity<>(movie, HttpStatus.OK);
-    }
-
-    @GetMapping("/getMovieByNameAndCountry")
-    public ResponseEntity<Movie> getMovieByNameAndCountry(@RequestParam String name,@RequestParam String country) {
-
-        Movie movie = this.movieService.getMovieByNameAndCountry(name,country);
-
-        log.info("REST request to get a movie by name and country {}", name,country);
 
         return new ResponseEntity<>(movie, HttpStatus.OK);
     }
