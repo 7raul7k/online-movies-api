@@ -17,10 +17,6 @@ public class MovieDTO {
     private String genre;
     private int year;
     private int rating;
-    private String description;
     private String director;
-    private int duration;
-    private String language;
-    private String country;
-    private String date;
+
 }

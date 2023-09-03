@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/movie")
 @Slf4j
+@CrossOrigin
 public class MovieResource {
 
     private MovieService movieService;
@@ -23,10 +24,13 @@ public class MovieResource {
     }
 
     @GetMapping("/allMovies")
-    public ResponseEntity<List<Movie>> getAllMovies() {
+    public ResponseEntity<List<Movie>> getAllMovies() throws InterruptedException {
         List<Movie> movieList = this.movieService.getAllMovies();
 
         log.info("REST request to get all movies {}", movieList);
+
+
+        Thread.sleep(5000);
 
         return new ResponseEntity<>(movieList, HttpStatus.OK);
     }

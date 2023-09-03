@@ -1,6 +1,7 @@
 package ro.myclass.onlinemovieapi.service;
 
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import ro.myclass.onlinemovieapi.dto.MovieDTO;
 import ro.myclass.onlinemovieapi.exceptions.ListEmptyException;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class MovieService {
 
     private MovieRepo movieRepo;
@@ -41,7 +43,6 @@ public class MovieService {
                     .genre(movieDTO.getGenre())
                     .year(movieDTO.getYear())
                     .rating(movieDTO.getRating())
-                    .description(movieDTO.getDescription())
                     .director(movieDTO.getDirector())
                     .build();
 
@@ -68,9 +69,7 @@ public class MovieService {
             throw new MovieNotFoundException();
         }
         Movie movie1 = movie.get();
-        if(movie.isEmpty()){
-            throw new MovieNotFoundException();
-        }else{
+
 
           if(movieDTO.getGenre()!=null){
               movie1.setGenre(movieDTO.getGenre());
@@ -83,7 +82,7 @@ public class MovieService {
           }
 
           movieRepo.saveAndFlush(movie1);
-        }
+
 
     }
 
@@ -188,7 +187,7 @@ public class MovieService {
     }
 
     public Movie getMovieById(int id){
-        Optional<Movie> movie = movieRepo.getMovieById((long) id);
+        Optional<Movie> movie = movieRepo.getMovieById( id);
         if(movie.isEmpty()){
             throw new MovieNotFoundException();
         }else{
