@@ -42,10 +42,7 @@ public class Movie {
             nullable = false,
             columnDefinition = "INT")
     private int rating;
-    @Column(name = "movie_description",
-            nullable = false,
-            columnDefinition = "TEXT")
-    private String description;
+
     @Column(name = "movie_director",
             nullable = false,
             columnDefinition = "TEXT")
@@ -54,14 +51,14 @@ public class Movie {
 
     @Override
     public String toString(){
-        return id+","+name+","+genre+","+year+","+rating+","+description+","+director;
+        return id+","+name+","+genre+","+year+","+rating+","+director;
     }
 
     @Override
     public boolean equals(Object obj){
         Movie m = (Movie) obj;
 
-        if(this.name.equals(m.name)&&this.genre.equals(m.genre)&&this.year==m.year&&this.rating==m.rating&&this.description.equals(m.description)&&this.director.equals(m.director)) {
+        if(this.name.equals(m.name)&&this.genre.equals(m.genre)&&this.year==m.year&&this.rating==m.rating&&this.director.equals(m.director)) {
             return true;
         }
 
